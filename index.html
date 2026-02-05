@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Invitación digital para mis XV años">
+    <title>Mis XV Años - Valentina</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== HERO / PORTADA ===== -->
+    <section id="hero">
+        <!-- Capa de overlay para contraste -->
+        <div class="hero-bg"></div>
+        
+        <!-- Contenido principal centrado -->
+        <div class="hero-content">
+            <!-- 1. Etiqueta superior -->
+            <span class="hero-tagline">Te invito a celebrar</span>
+            
+            <!-- 2. Título principal -->
+            <h1 class="hero-title">MIS XV</h1>
+            
+            <!-- 3. Divisor elegante -->
+            <div class="hero-divider" aria-hidden="true"></div>
+            
+            <!-- 4. Nombre destacado -->
+            <h2 class="hero-name">Valentina</h2>
+            
+            <!-- 5. Frase final -->
+            <p class="hero-phrase">Una noche mágica para recordar siempre</p>
+        </div>
+        
+        <!-- Indicador de scroll -->
+        <a href="#countdown" class="hero-scroll-indicator" aria-label="Ir al contenido">
+            <span class="scroll-line"></span>
+        </a>
+    </section>
+
+    <!-- ===== CONTADOR REGRESIVO ===== -->
+    <section id="countdown">
+        <div class="container">
+            <h3 class="countdown-label">Faltan</h3>
+            <div id="countdown-display" class="countdown-grid">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-text">Días</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-text">Horas</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-text">Minutos</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-text">Segundos</span>
+                </div>
+            </div>
+            <p id="countdown-message" class="countdown-message"></p>
+        </div>
+    </section>
+
+    <!-- ===== SECCIONES ACCORDION ===== -->
+    <main class="accordion-section">
+        <div class="container">
+            
+            <!-- ACCORDION: CUÁNDO -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </span>
+                    <span class="accordion-title">Cuándo</span>
+                    <span class="accordion-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p class="info-main">Sábado 15 de Octubre, 2026</p>
+                        <p class="info-detail">21:00 hs</p>
+                        <p class="info-note">Puntualidad agradecida ✨</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION: DÓNDE -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </span>
+                    <span class="accordion-title">Dónde</span>
+                    <span class="accordion-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p class="info-main">Salón La Rosa de Cristal</p>
+                        <p class="info-detail">Av. del Libertador 4500, CABA</p>
+                        <a href="https://maps.google.com/?q=Av.+del+Libertador+4500,+Buenos+Aires" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="btn btn-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                            </svg>
+                            Cómo llegar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION: REGALOS -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                            <rect x="2" y="7" width="20" height="5"></rect>
+                            <line x1="12" y1="22" x2="12" y2="7"></line>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                        </svg>
+                    </span>
+                    <span class="accordion-title">Regalos</span>
+                    <span class="accordion-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="gift-options">
+                            <div class="gift-row">
+                                <span class="gift-label">Alias</span>
+                                <span class="gift-value">xxxxxxxx</span>
+                                <button class="copy-btn" data-copy="xxxxxxxx" aria-label="Copiar alias">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="gift-row">
+                                <span class="gift-label">CVU</span>
+                                <span class="gift-value">xxxxxxxx</span>
+                                <button class="copy-btn" data-copy="xxxxxxxx" aria-label="Copiar CVU">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION: DRESS CODE -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path>
+                        </svg>
+                    </span>
+                    <span class="accordion-title">Dress Code</span>
+                    <span class="accordion-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p class="info-main">Elegante Sport</p>
+                        <p class="info-detail">Por favor evitar color rosa</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION: CONFIRMAR ASISTENCIA -->
+            <div class="accordion-item accordion-item--highlight">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </span>
+                    <span class="accordion-title">Confirmar Asistencia</span>
+                    <span class="accordion-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p class="info-intro">Tu confirmación es muy importante para nosotros.</p>
+                        <p class="info-deadline"><strong>Fecha límite:</strong> 1 de Octubre, 2026</p>
+                        
+                        <!-- Formulario de confirmación -->
+                        <form id="rsvp-form" class="rsvp-form">
+                            <div class="form-group">
+                                <label for="rsvp-name">Nombre</label>
+                                <input type="text" id="rsvp-name" name="name" placeholder="Tu nombre" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rsvp-lastname">Apellido</label>
+                                <input type="text" id="rsvp-lastname" name="lastname" placeholder="Tu apellido" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rsvp-attendance">¿Vas a asistir?</label>
+                                <select id="rsvp-attendance" name="attendance" required>
+                                    <option value="">Seleccioná una opción</option>
+                                    <option value="Confirmo">Sí, confirmo asistencia</option>
+                                    <option value="No confirmo">No podré asistir</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rsvp-food">Alimentación</label>
+                                <select id="rsvp-food" name="food">
+                                    <option value="Sin restricciones">Sin restricciones</option>
+                                    <option value="Vegetariano">Vegetariano</option>
+                                    <option value="Vegano">Vegano</option>
+                                    <option value="Sin TACC (celíaco)">Sin TACC (celíaco)</option>
+                                    <option value="Otra restricción">Otra restricción</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rsvp-song">Canción para la fiesta</label>
+                                <input type="text" id="rsvp-song" name="song" placeholder="Artista - Canción">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rsvp-message">Mensaje (opcional)</label>
+                                <textarea id="rsvp-message" name="message" rows="3" placeholder="Dejame un mensaje..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-whatsapp btn-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                                Enviar por WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCORDION: ÁLBUM DE FOTOS -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </span>
+                    <span class="accordion-title">Álbum de Fotos</span>
+                    <span class="accordion-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p class="info-intro">Mirá las fotos de este momento tan especial.</p>
+                        <a href="https://photos.google.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            class="btn btn-primary btn-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            Ver Álbum Completo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-name">Valentina</p>
+                <p class="footer-event">XV Años · 2026</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/valentina.xv" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link" 
+                       aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/5491123141321" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link" 
+                       aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer-credits">Invitación interactiva</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
