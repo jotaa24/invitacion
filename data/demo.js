@@ -46,12 +46,12 @@ window.EVENT_DATA = {
     heroImage: "assets/images/1.jpg",
 
     galleryImages: [
-        "assets/images/2.jpg",
-        "assets/images/3.jpg",
-        "assets/images/4.jpg",
-        "assets/images/5.jpg",
-        "assets/images/6.jpg",
-        "assets/images/7.jpg"
+        "assets/images/2.JPG",
+        "assets/images/3.JPG",
+        "assets/images/4.JPG",
+        "assets/images/5.JPG",
+        "assets/images/6.JPG",
+        "assets/images/7.JPG"
     ],
 
     // ===== CONFIGURACIÓN DEL CARRUSEL =====

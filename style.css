@@ -797,6 +797,11 @@ h3, h4, h5, h6 {
     box-shadow: var(--shadow-soft);
     border: 1px solid rgba(0, 0, 0, 0.04);
     transition: box-shadow 0.3s ease;
+    margin-bottom: 1.2rem;
+}
+
+.accordion-item:last-child {
+    margin-bottom: 0;
 }
 
 .accordion-item:hover {
@@ -919,7 +924,8 @@ h3, h4, h5, h6 {
 
 /* Cuerpo del contenido */
 .accordion-body {
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 1.8rem 1.8rem 2rem;
+    line-height: 1.7;
     
     /* Animación de entrada */
     transform: translateY(-10px);
@@ -928,6 +934,22 @@ h3, h4, h5, h6 {
 
 .accordion-item.is-open .accordion-body {
     transform: translateY(0);
+}
+
+/* Separación entre párrafos */
+.accordion-body p {
+    margin-bottom: 1rem;
+}
+
+.accordion-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Títulos y negritas dentro del accordion */
+.accordion-body h3,
+.accordion-body strong {
+    display: block;
+    margin-bottom: 0.6rem;
 }
 
 /* ===== ESTILOS DEL CONTENIDO INTERNO ===== */
@@ -1167,7 +1189,7 @@ h3, h4, h5, h6 {
 /* ===== ACCORDION RESPONSIVE ===== */
 
 /* Móviles pequeños */
-@media (max-width: 479px) {
+@media (max-width: 480px) {
     .accordion-section {
         padding: var(--space-lg) 0 var(--space-2xl);
     }
@@ -1196,7 +1218,7 @@ h3, h4, h5, h6 {
     }
     
     .accordion-body {
-        padding: 0 1.25rem 1.25rem;
+        padding: 1.5rem 1.4rem 1.8rem;
     }
     
     .info-main {
