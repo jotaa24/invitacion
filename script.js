@@ -989,19 +989,19 @@ function loadEventData(evento) {
  * Lee el parámetro URL y carga los datos correspondientes
  */
 function bootstrap() {
-    const evento = getEventoFromURL();
-    
+    let evento = getEventoFromURL();
+
+    // Si no hay evento, usar demo por defecto
     if (!evento) {
-        showErrorMessage("Evento no especificado");
-        return;
+        evento = "demo";
     }
-    
-    // Validar que el nombre del evento sea seguro (solo letras y números)
+
+    // Validar formato seguro
     if (!/^[a-zA-Z0-9_-]+$/.test(evento)) {
         showErrorMessage("Evento inválido");
         return;
     }
-    
+
     console.log(`📋 Cargando evento: ${evento}`);
     loadEventData(evento);
 }
