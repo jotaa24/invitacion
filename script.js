@@ -924,27 +924,8 @@ function initSite() {
  * @returns {string|null} Nombre del evento o null
  */
 function getEventoFromURL() {
-    const path = window.location.pathname;
-    const segments = path.split("/").filter(Boolean);
-    
-    // Si no hay segmento, no hay evento
-    if (segments.length === 0) return null;
-    
-    // Tomar el último segmento como nombre del evento
-    // Ignorar "index.html" si está presente
-    let evento = segments[segments.length - 1];
-    
-    // Si el último segmento es index.html, tomar el anterior
-    if (evento === "index.html" && segments.length > 1) {
-        evento = segments[segments.length - 2];
-    } else if (evento === "index.html") {
-        return null;
-    }
-    
-    // Remover extensión .html si existe
-    evento = evento.replace(/\.html$/, "");
-    
-    return evento || null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get("evento");
 }
 
 /**
