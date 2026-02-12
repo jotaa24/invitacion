@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Invitación digital para mis XV años">
-    <title>Mis XV Años - Valentina</title>
+    <meta name="description" content="Invitación digital para celebración especial">
+    <title>Invitación Digital</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
@@ -27,22 +27,31 @@
             <span class="hero-tagline">Te invito a celebrar</span>
             
             <!-- 2. Título principal -->
-            <h1 class="hero-title">MIS XV</h1>
+            <h1 class="hero-title" data-event="tipoEvento"></h1>
             
             <!-- 3. Divisor elegante -->
             <div class="hero-divider" aria-hidden="true"></div>
             
             <!-- 4. Nombre destacado -->
-            <h2 class="hero-name">Valentina</h2>
+            <h2 class="hero-name" data-event="nombre"></h2>
             
             <!-- 5. Frase final -->
-            <p class="hero-phrase">Una noche mágica para recordar siempre</p>
+            <p class="hero-phrase" data-event="frase"></p>
         </div>
         
         <!-- Indicador de scroll -->
         <a href="#countdown" class="hero-scroll-indicator" aria-label="Ir al contenido">
             <span class="scroll-line"></span>
         </a>
+    </section>
+
+    <!-- ===== CARRUSEL DE FOTOS ===== -->
+    <section id="gallery">
+        <div class="carousel" aria-label="Galería de fotos">
+            <div class="carousel-track" id="carousel-track">
+                <!-- Las imágenes se cargan dinámicamente según el perfil -->
+            </div>
+        </div>
     </section>
 
     <!-- ===== CONTADOR REGRESIVO ===== -->
@@ -98,8 +107,8 @@
                 </button>
                 <div class="accordion-content">
                     <div class="accordion-body">
-                        <p class="info-main">Sábado 15 de Octubre, 2026</p>
-                        <p class="info-detail">21:00 hs</p>
+                        <p class="info-main" data-event="fecha"></p>
+                        <p class="info-detail" data-event="hora"></p>
                         <p class="info-note">Puntualidad agradecida ✨</p>
                     </div>
                 </div>
@@ -123,9 +132,10 @@
                 </button>
                 <div class="accordion-content">
                     <div class="accordion-body">
-                        <p class="info-main">Salón La Rosa de Cristal</p>
-                        <p class="info-detail">Av. del Libertador 4500, CABA</p>
-                        <a href="https://maps.google.com/?q=Av.+del+Libertador+4500,+Buenos+Aires" 
+                        <p class="info-main" data-event="lugar.nombre"></p>
+                        <p class="info-detail" data-event="lugar.direccion"></p>
+                        <a id="maps-link"
+                           href="#" 
                            target="_blank" 
                            rel="noopener noreferrer" 
                            class="btn btn-accent">
@@ -162,8 +172,8 @@
                         <div class="gift-options">
                             <div class="gift-row">
                                 <span class="gift-label">Alias</span>
-                                <span class="gift-value">xxxxxxxx</span>
-                                <button class="copy-btn" data-copy="xxxxxxxx" aria-label="Copiar alias">
+                                <span class="gift-value" data-event="regalos.alias"></span>
+                                <button class="copy-btn" data-copy-from="regalos.alias" aria-label="Copiar alias">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -172,8 +182,8 @@
                             </div>
                             <div class="gift-row">
                                 <span class="gift-label">CVU</span>
-                                <span class="gift-value">xxxxxxxx</span>
-                                <button class="copy-btn" data-copy="xxxxxxxx" aria-label="Copiar CVU">
+                                <span class="gift-value" data-event="regalos.cvu"></span>
+                                <button class="copy-btn" data-copy-from="regalos.cvu" aria-label="Copiar CVU">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -202,8 +212,8 @@
                 </button>
                 <div class="accordion-content">
                     <div class="accordion-body">
-                        <p class="info-main">Elegante Sport</p>
-                        <p class="info-detail">Por favor evitar color rosa</p>
+                        <p class="info-main" data-event="dressCode.tipo"></p>
+                        <p class="info-detail" data-event="dressCode.indicacion"></p>
                     </div>
                 </div>
             </div>
@@ -227,7 +237,7 @@
                 <div class="accordion-content">
                     <div class="accordion-body">
                         <p class="info-intro">Tu confirmación es muy importante para nosotros.</p>
-                        <p class="info-deadline"><strong>Fecha límite:</strong> 1 de Octubre, 2026</p>
+                        <p class="info-deadline"><strong>Fecha límite:</strong> <span data-event="confirmacion.fechaLimite"></span></p>
                         
                         <!-- Formulario de confirmación -->
                         <form id="rsvp-form" class="rsvp-form">
@@ -282,41 +292,6 @@
                 </div>
             </div>
 
-            <!-- ACCORDION: ÁLBUM DE FOTOS -->
-            <div class="accordion-item">
-                <button class="accordion-header" aria-expanded="false">
-                    <span class="accordion-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                            <polyline points="21 15 16 10 5 21"></polyline>
-                        </svg>
-                    </span>
-                    <span class="accordion-title">Álbum de Fotos</span>
-                    <span class="accordion-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </span>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body">
-                        <p class="info-intro">Mirá las fotos de este momento tan especial.</p>
-                        <a href="https://photos.google.com" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            class="btn btn-primary btn-full">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                            Ver Álbum Completo
-                        </a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </main>
 
@@ -324,8 +299,8 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p class="footer-name">Valentina</p>
-                <p class="footer-event">XV Años · 2026</p>
+                <p class="footer-name" data-event="nombre"></p>
+                <p class="footer-event"><span data-event="tipoEvento"></span> · 2026</p>
                 <div class="footer-social">
                     <a href="https://instagram.com/valentina.xv" 
                        target="_blank" 
@@ -354,6 +329,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <!-- Los datos del evento se cargan dinámicamente según ?evento=nombre -->
     <script src="script.js"></script>
 </body>
 </html>

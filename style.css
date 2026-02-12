@@ -22,8 +22,9 @@
     --color-cream: #faf8f5;
     
     /* Tipografía */
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: var(--font-primary);
+    --font-body: var(--font-primary);
     
     /* Espaciado */
     --space-xs: 0.5rem;
@@ -78,9 +79,13 @@ body {
 
 /* ===== TIPOGRAFÍA ===== */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 600;
+    font-family: var(--font-primary);
+    font-weight: 700;
     line-height: 1.2;
+}
+
+h3, h4, h5, h6 {
+    font-weight: 600;
 }
 
 .section-header {
@@ -521,6 +526,143 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   SECCIÓN: CARRUSEL DE FOTOS
+   ============================================ */
+
+#gallery {
+    background: var(--color-dark);
+    padding: 0;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel-track:active {
+    cursor: grabbing;
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 280px;
+    height: 350px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-slide:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-strong);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--color-accent);
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Carrusel responsive */
+@media (max-width: 479px) {
+    .carousel-track {
+        padding: 1.5rem 0.75rem;
+        gap: 0.75rem;
+    }
+    
+    .carousel-slide {
+        width: 240px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-track {
+        padding: 2.5rem 2rem;
+        gap: 1.25rem;
+    }
+    
+    .carousel-slide {
+        width: 320px;
+        height: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-track {
+        padding: 3rem 2rem;
+        gap: 1.5rem;
+    }
+    
+    .carousel-slide {
+        width: 360px;
+        height: 450px;
+    }
+}
+
+/* ============================================
+   HERO CON IMAGEN DE FONDO
+   ============================================ */
+
+#hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-bg {
+    /* Overlay oscuro sobre la imagen */
+    background: 
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.6) 100%
+        ) !important;
+}
+
+/* ============================================
    SECCIÓN: CONTADOR REGRESIVO
    ============================================ */
 #countdown {
@@ -530,12 +672,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .countdown-label {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: var(--space-lg);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
 .countdown-grid {
@@ -554,9 +696,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .countdown-number {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 700;
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 600;
     color: var(--color-accent);
     line-height: 1;
 }
@@ -565,23 +707,24 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.6);
     margin-top: var(--space-xs);
 }
 
 .countdown-separator {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-size: 2.5rem;
+    font-weight: 300;
     color: var(--color-accent);
     opacity: 0.5;
     margin-bottom: 1.5rem;
 }
 
 .countdown-message {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-size: 1.5rem;
-    font-style: italic;
+    font-weight: 500;
     color: var(--color-accent);
     margin-top: var(--space-lg);
 }
@@ -677,9 +820,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Título del accordion */
 .accordion-title {
     flex: 1;
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-size: 1.15rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--color-dark);
     letter-spacing: 0.01em;
 }
@@ -748,7 +891,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== ESTILOS DEL CONTENIDO INTERNO ===== */
 
 .info-main {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-dark);
@@ -1072,9 +1215,9 @@ footer {
 }
 
 .footer-name {
-    font-family: var(--font-display);
+    font-family: var(--font-primary);
     font-size: 1.8rem;
-    font-style: italic;
+    font-weight: 600;
     color: var(--color-accent);
 }
 
@@ -1118,6 +1261,28 @@ footer {
 /* ============================================
    MEDIA QUERIES - RESPONSIVE (GENERAL)
    ============================================ */
+
+/* Mobile - Contador compacto */
+@media (max-width: 480px) {
+    #countdown {
+        padding: 2rem 1rem;
+    }
+    
+    .countdown-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+    
+    .countdown-item {
+        min-width: 60px;
+    }
+    
+    .countdown-separator {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
 
 /* Tablet */
 @media (min-width: 768px) {
