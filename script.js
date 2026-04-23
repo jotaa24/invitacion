@@ -83,7 +83,7 @@ function padNumber(num) {
  */
 function updateCountdownDisplay() {
     const time = getTimeRemaining();
-    
+
     // Obtener elementos del DOM
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -150,10 +150,10 @@ function initCountdown() {
 async function copyToClipboard(text, button) {
     try {
         await navigator.clipboard.writeText(text);
-        
+
         // Feedback visual
         button.classList.add("copied");
-        
+
         // Cambiar ícono temporalmente
         const originalHTML = button.innerHTML;
         button.innerHTML = `
@@ -171,7 +171,7 @@ async function copyToClipboard(text, button) {
         console.log("✓ Texto copiado:", text);
     } catch (err) {
         console.error("Error al copiar:", err);
-        
+
         // Fallback para navegadores antiguos
         fallbackCopyToClipboard(text);
     }
@@ -207,16 +207,16 @@ function initCopyButtons() {
     const copyButtons = document.querySelectorAll(".copy-btn");
 
     copyButtons.forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             // Primero intenta data-copy-from (dinámico desde EVENT_DATA)
             const dataPath = this.getAttribute("data-copy-from");
             let textToCopy = this.getAttribute("data-copy");
-            
+
             if (dataPath && typeof EVENT_DATA !== "undefined") {
                 // Obtener valor desde EVENT_DATA usando la ruta (ej: "regalos.alias")
                 textToCopy = getNestedValue(EVENT_DATA, dataPath) || textToCopy;
             }
-            
+
             if (textToCopy) {
                 copyToClipboard(textToCopy, this);
             }
@@ -262,27 +262,27 @@ function getWhatsAppNumber() {
  */
 function generateWhatsAppMessage(data) {
     const { nombre, apellido, asistencia, alimentacion, cancion, mensajeExtra } = data;
-    
+
     // Estado de asistencia formateado
     const asistenciaTexto = asistencia === "Confirmo" ? "Confirmada" : "No podrá asistir";
-    
+
     // Construir mensaje elegante y sobrio
     let mensaje = `*Confirmación de asistencia*\n\n`;
-    
+
     // Campos obligatorios
     mensaje += `*Nombre:*\n${nombre} ${apellido}\n\n`;
     mensaje += `*Asistencia:*\n${asistenciaTexto}\n\n`;
     mensaje += `*Alimentación:*\n${alimentacion}`;
-    
+
     // Campos opcionales (solo si tienen contenido)
     if (cancion && cancion.trim()) {
         mensaje += `\n\n*Canción sugerida:*\n${cancion.trim()}`;
     }
-    
+
     if (mensajeExtra && mensajeExtra.trim()) {
         mensaje += `\n\n*Mensaje:*\n${mensajeExtra.trim()}`;
     }
-    
+
     return mensaje;
 }
 
@@ -291,14 +291,14 @@ function generateWhatsAppMessage(data) {
  */
 function initRSVPForm() {
     const form = document.getElementById("rsvp-form");
-    
+
     if (!form) {
         return;
     }
 
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
-        
+
         // Obtener datos del formulario
         const formData = {
             nombre: document.getElementById("rsvp-name").value,
@@ -308,25 +308,25 @@ function initRSVPForm() {
             cancion: document.getElementById("rsvp-song").value,
             mensajeExtra: document.getElementById("rsvp-message").value
         };
-        
+
         // Validar campos requeridos
         if (!formData.nombre || !formData.apellido || !formData.asistencia) {
             alert("Por favor completá tu nombre, apellido y confirmá tu asistencia.");
             return;
         }
-        
+
         // Generar mensaje premium
         const message = generateWhatsAppMessage(formData);
-        
+
         // Codificar para URL
         const encodedMessage = encodeURIComponent(message);
-        
+
         // Construir URL de WhatsApp (número desde EVENT_DATA)
         const whatsappURL = `https://wa.me/${getWhatsAppNumber()}?text=${encodedMessage}`;
-        
+
         // Abrir WhatsApp
         window.open(whatsappURL, "_blank");
-        
+
         console.log("✓ Mensaje de confirmación enviado a WhatsApp");
     });
 
@@ -344,14 +344,14 @@ function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
 
     links.forEach(link => {
-        link.addEventListener("click", function(e) {
+        link.addEventListener("click", function (e) {
             const href = this.getAttribute("href");
-            
+
             // Ignorar si es solo "#"
             if (href === "#") return;
 
             const target = document.querySelector(href);
-            
+
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({
@@ -375,7 +375,7 @@ function initSmoothScroll() {
  */
 function initAccordion() {
     const accordionItems = document.querySelectorAll(".accordion-item");
-    
+
     if (accordionItems.length === 0) {
         console.log("⚠ No se encontraron accordions");
         return;
@@ -384,13 +384,13 @@ function initAccordion() {
     accordionItems.forEach(item => {
         const header = item.querySelector(".accordion-header");
         const content = item.querySelector(".accordion-content");
-        
+
         if (!header || !content) return;
 
         // Evento click en el header
-        header.addEventListener("click", function() {
+        header.addEventListener("click", function () {
             const isOpen = item.classList.contains("is-open");
-            
+
             // Cerrar todos los demás accordions (comportamiento exclusivo)
             // Comentar las siguientes líneas si querés permitir múltiples abiertos
             accordionItems.forEach(otherItem => {
@@ -398,7 +398,7 @@ function initAccordion() {
                     closeAccordion(otherItem);
                 }
             });
-            
+
             // Toggle del accordion actual
             if (isOpen) {
                 closeAccordion(item);
@@ -408,7 +408,7 @@ function initAccordion() {
         });
 
         // Soporte para teclado (accesibilidad)
-        header.addEventListener("keydown", function(e) {
+        header.addEventListener("keydown", function (e) {
             if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 header.click();
@@ -426,19 +426,19 @@ function initAccordion() {
 function openAccordion(item) {
     const content = item.querySelector(".accordion-content");
     const header = item.querySelector(".accordion-header");
-    
+
     // Agregar clase para estilos
     item.classList.add("is-open");
-    
+
     // Actualizar aria para accesibilidad
     header.setAttribute("aria-expanded", "true");
-    
+
     // Calcular altura real del contenido
     const scrollHeight = content.scrollHeight;
-    
+
     // Animar apertura
     content.style.maxHeight = scrollHeight + "px";
-    
+
     // Después de la animación, permitir contenido dinámico
     setTimeout(() => {
         if (item.classList.contains("is-open")) {
@@ -454,16 +454,16 @@ function openAccordion(item) {
 function closeAccordion(item) {
     const content = item.querySelector(".accordion-content");
     const header = item.querySelector(".accordion-header");
-    
+
     // Fijar altura actual antes de animar
     content.style.maxHeight = content.scrollHeight + "px";
-    
+
     // Forzar reflow para que la transición funcione
     content.offsetHeight;
-    
+
     // Animar cierre
     content.style.maxHeight = "0";
-    
+
     // Quitar clase después de un pequeño delay
     setTimeout(() => {
         item.classList.remove("is-open");
@@ -528,7 +528,7 @@ function initHeroImage() {
         console.log("⚠ No se encontró imagen para el hero");
         return;
     }
-    
+
     const hero = document.getElementById("hero");
     if (hero) {
         hero.style.backgroundImage = `url(${EVENT_DATA.heroImage})`;
@@ -592,26 +592,26 @@ function initCarousel() {
         console.log("⚠ No se encontraron imágenes para el carrusel");
         return;
     }
-    
+
     const track = document.getElementById("carousel-track");
     const gallery = document.getElementById("gallery");
-    
+
     if (!track || !gallery) return;
-    
+
     const images = EVENT_DATA.galleryImages;
     const totalImages = images.length;
     const TRANSITION_DURATION = 600; // 0.6s
     const AUTOPLAY_INTERVAL = 4000;  // 4s
-    
+
     // ===== CREAR SLIDES CON CLONES =====
     // Estructura: [clon última] [imagen 1] [imagen 2] ... [imagen N] [clon primera]
-    
+
     // Clon de la última imagen al inicio
     const firstClone = document.createElement("div");
     firstClone.className = "carousel-slide carousel-clone";
     firstClone.innerHTML = `<img src="${images[totalImages - 1]}" alt="Foto clon" loading="lazy">`;
     track.appendChild(firstClone);
-    
+
     // Imágenes originales
     images.forEach((src, index) => {
         const slide = document.createElement("div");
@@ -619,13 +619,13 @@ function initCarousel() {
         slide.innerHTML = `<img src="${src}" alt="Foto ${index + 1}" loading="lazy">`;
         track.appendChild(slide);
     });
-    
+
     // Clon de la primera imagen al final
     const lastClone = document.createElement("div");
     lastClone.className = "carousel-slide carousel-clone";
     lastClone.innerHTML = `<img src="${images[0]}" alt="Foto clon" loading="lazy">`;
     track.appendChild(lastClone);
-    
+
     // ===== VARIABLES =====
     let currentIndex = 1; // Empezar en la primera imagen real (índice 1)
     let isTransitioning = false;
@@ -635,9 +635,9 @@ function initCarousel() {
     let currentTranslate = 0;
     let prevTranslate = 0;
     let isDragging = false;
-    
+
     // ===== FUNCIONES AUXILIARES =====
-    
+
     // Obtener ancho de slide + gap
     function getSlideWidth() {
         const slide = track.querySelector(".carousel-slide");
@@ -646,7 +646,7 @@ function initCarousel() {
         const gap = parseFloat(style.gap) || 16;
         return slide.offsetWidth + gap;
     }
-    
+
     // Posicionar track sin animación
     function setPositionInstant(index) {
         track.style.transition = "none";
@@ -655,50 +655,50 @@ function initCarousel() {
         track.style.transform = `translateX(${currentTranslate}px)`;
         prevTranslate = currentTranslate;
     }
-    
+
     // Mover a slide con animación
     function goToSlide(index) {
         if (isTransitioning) return;
-        
+
         isTransitioning = true;
         const slideWidth = getSlideWidth();
-        
+
         track.style.transition = `transform ${TRANSITION_DURATION}ms ease`;
         currentTranslate = -index * slideWidth;
         track.style.transform = `translateX(${currentTranslate}px)`;
         prevTranslate = currentTranslate;
         currentIndex = index;
     }
-    
+
     // Manejar fin de transición (loop infinito)
     function handleTransitionEnd() {
         isTransitioning = false;
-        
+
         // Si llegó al clon final (después de la última imagen real)
         if (currentIndex >= totalImages + 1) {
             currentIndex = 1;
             setPositionInstant(currentIndex);
         }
-        
+
         // Si llegó al clon inicial (antes de la primera imagen real)
         if (currentIndex <= 0) {
             currentIndex = totalImages;
             setPositionInstant(currentIndex);
         }
     }
-    
+
     // ===== NAVEGACIÓN =====
-    
+
     function nextSlide() {
         goToSlide(currentIndex + 1);
     }
-    
+
     function prevSlide() {
         goToSlide(currentIndex - 1);
     }
-    
+
     // ===== AUTOPLAY =====
-    
+
     function startAutoplay() {
         stopAutoplay();
         autoplayTimer = setInterval(() => {
@@ -707,31 +707,31 @@ function initCarousel() {
             }
         }, AUTOPLAY_INTERVAL);
     }
-    
+
     function stopAutoplay() {
         if (autoplayTimer) {
             clearInterval(autoplayTimer);
             autoplayTimer = null;
         }
     }
-    
+
     function pauseAutoplay() {
         isInteracting = true;
     }
-    
+
     function resumeAutoplay() {
         isInteracting = false;
     }
-    
+
     // ===== EVENTOS =====
-    
+
     // Transición completada
     track.addEventListener("transitionend", handleTransitionEnd);
-    
+
     // Hover pause (desktop)
     gallery.addEventListener("mouseenter", pauseAutoplay);
     gallery.addEventListener("mouseleave", resumeAutoplay);
-    
+
     // Touch/Swipe (mobile)
     track.addEventListener("touchstart", (e) => {
         if (isTransitioning) return;
@@ -740,7 +740,7 @@ function initCarousel() {
         startX = e.touches[0].clientX;
         track.style.transition = "none";
     }, { passive: true });
-    
+
     track.addEventListener("touchmove", (e) => {
         if (!isDragging) return;
         const currentX = e.touches[0].clientX;
@@ -748,14 +748,14 @@ function initCarousel() {
         currentTranslate = prevTranslate + diff;
         track.style.transform = `translateX(${currentTranslate}px)`;
     }, { passive: true });
-    
+
     track.addEventListener("touchend", () => {
         if (!isDragging) return;
         isDragging = false;
-        
+
         const slideWidth = getSlideWidth();
         const movedBy = currentTranslate - prevTranslate;
-        
+
         // Si movió más del 25% del slide, cambiar
         if (Math.abs(movedBy) > slideWidth * 0.25) {
             if (movedBy < 0) {
@@ -767,10 +767,10 @@ function initCarousel() {
             // Volver a posición actual
             goToSlide(currentIndex);
         }
-        
+
         setTimeout(resumeAutoplay, 1500);
     });
-    
+
     // Mouse drag (desktop)
     track.addEventListener("mousedown", (e) => {
         if (isTransitioning) return;
@@ -780,7 +780,7 @@ function initCarousel() {
         track.style.transition = "none";
         track.style.cursor = "grabbing";
     });
-    
+
     track.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         const currentX = e.clientX;
@@ -788,15 +788,15 @@ function initCarousel() {
         currentTranslate = prevTranslate + diff;
         track.style.transform = `translateX(${currentTranslate}px)`;
     });
-    
+
     track.addEventListener("mouseup", () => {
         if (!isDragging) return;
         isDragging = false;
         track.style.cursor = "grab";
-        
+
         const slideWidth = getSlideWidth();
         const movedBy = currentTranslate - prevTranslate;
-        
+
         if (Math.abs(movedBy) > slideWidth * 0.25) {
             if (movedBy < 0) {
                 nextSlide();
@@ -806,10 +806,10 @@ function initCarousel() {
         } else {
             goToSlide(currentIndex);
         }
-        
+
         setTimeout(resumeAutoplay, 1500);
     });
-    
+
     track.addEventListener("mouseleave", () => {
         if (isDragging) {
             isDragging = false;
@@ -817,10 +817,10 @@ function initCarousel() {
             goToSlide(currentIndex);
         }
     });
-    
+
     // Prevenir drag de imágenes
     track.addEventListener("dragstart", (e) => e.preventDefault());
-    
+
     // Mouse drag (desktop)
     track.addEventListener("mousedown", (e) => {
         pauseAutoplay();
@@ -829,7 +829,7 @@ function initCarousel() {
         track.style.transition = "none";
         track.style.cursor = "grabbing";
     });
-    
+
     track.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         const currentX = e.clientX;
@@ -837,15 +837,15 @@ function initCarousel() {
         currentTranslate = prevTranslate + diff;
         track.style.transform = `translateX(${currentTranslate}px)`;
     });
-    
+
     track.addEventListener("mouseup", () => {
         if (!isDragging) return;
         isDragging = false;
         track.style.cursor = "grab";
-        
+
         const slideWidth = getSlideWidth();
         const movedBy = currentTranslate - prevTranslate;
-        
+
         if (Math.abs(movedBy) > slideWidth * 0.2) {
             if (movedBy < 0) {
                 goToSlide(currentIndex + 1);
@@ -857,10 +857,10 @@ function initCarousel() {
         } else {
             goToSlide(currentIndex);
         }
-        
+
         setTimeout(resumeAutoplay, 1000);
     });
-    
+
     track.addEventListener("mouseleave", () => {
         if (isDragging) {
             isDragging = false;
@@ -868,20 +868,20 @@ function initCarousel() {
             goToSlide(currentIndex);
         }
     });
-    
+
     // Prevenir drag de imágenes
     track.addEventListener("dragstart", (e) => e.preventDefault());
-    
+
     // Recalcular en resize
     window.addEventListener("resize", () => {
         setPositionInstant(currentIndex);
     });
-    
+
     // ===== INICIALIZACIÓN =====
     // Posicionar en el primer slide real (índice 1, después del clon)
     setPositionInstant(1);
     track.style.cursor = "grab";
-    
+
     // Iniciar autoplay
     startAutoplay();
     console.log("✓ Carrusel infinito inicializado:", totalImages, "imágenes + 2 clones");
@@ -920,12 +920,44 @@ function initSite() {
 // ============================================
 
 /**
- * Obtiene el parámetro 'evento' de la URL
+ * Obtiene el parámetro 'evento' de la URL o de la ruta (nombre de archivo o carpeta)
  * @returns {string|null} Nombre del evento o null
  */
 function getEventoFromURL() {
+    // 1. Primero intentar obtener por parámetro (ej: ?evento=sofia)
     const params = new URLSearchParams(window.location.search);
-    return params.get("evento");
+    const paramEvento = params.get("evento");
+    if (paramEvento) return paramEvento;
+
+    // 2. Intentar con el nombre del archivo (ej: /morena.html -> morena)
+    const pathname = window.location.pathname;
+    const parts = pathname.split('/').filter(p => p); // Elimina strings vacíos
+
+    if (parts.length > 0) {
+        const lastPart = parts[parts.length - 1];
+
+        // Si termina en .html pero no es index.html (ej: sheila.html)
+        if (lastPart.endsWith('.html') && lastPart !== 'index.html') {
+            return lastPart.replace('.html', '');
+        }
+
+        // Si el archivo es index.html o solo es la barra final, probar con la carpeta anterior (ej: /sheila/ o /sheila/index.html)
+        if ((lastPart === 'index.html' || pathname.endsWith('/')) && parts.length > 1) {
+            const folderName = pathname.endsWith('/') ? lastPart : parts[parts.length - 2];
+
+            // Evitar detectar carpetas del sistema
+            if (folderName && folderName !== 'invitacion' && folderName !== 'html') {
+                return folderName;
+            }
+        }
+
+        // Si entra directamente a /sheila sin barra final
+        if (!lastPart.endsWith('.html') && lastPart !== 'invitacion') {
+            return lastPart;
+        }
+    }
+
+    return null;
 }
 
 /**
@@ -970,17 +1002,17 @@ function showErrorMessage(message) {
 function loadEventData(evento) {
     const script = document.createElement("script");
     script.src = `data/${evento}.js`;
-    
-    script.onload = function() {
+
+    script.onload = function () {
         console.log(`✓ Datos del evento "${evento}" cargados`);
         initSite();
     };
-    
-    script.onerror = function() {
+
+    script.onerror = function () {
         console.error(`✗ No se encontró el evento: ${evento}`);
         showErrorMessage(`Evento "${evento}" no encontrado`);
     };
-    
+
     document.head.appendChild(script);
 }
 

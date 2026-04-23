@@ -1,21 +1,20 @@
 /**
  * ============================================
- * PERFIL: DEMO
- * Invitación de demostración
+ * PERFIL: SHEILA
  * ============================================
  */
 
 window.EVENT_DATA = {
 
     // ===== IDENTIDAD DEL EVENTO =====
-    tipoEvento: "Mis XV",
-    nombre: "Invitación Demostrativa",
-    frase: "Una noche inolvidable",
+    tipoEvento: "Mis Quince",
+    nombre: "La loca Sheila",
+    frase: "Una noche unica",
 
     // ===== FECHA Y HORA =====
-    fecha: "15 de Octubre 2026",
+    fecha: "15 de Octubre 2028",
     hora: "21:00 hs",
-    countdownDate: "2026-10-15T21:00:00",
+    countdownDate: "2028-10-15T21:00:00",
 
     // ===== LUGAR =====
     lugar: {
@@ -43,15 +42,13 @@ window.EVENT_DATA = {
     },
 
     // ===== IMÁGENES =====
-    heroImage: "assets/images/1.jpg",
+    heroImage: "assets/sheila/hero.jpg",
 
     galleryImages: [
-        "assets/images/2.JPG",
-        "assets/images/3.JPG",
-        "assets/images/4.JPG",
-        "assets/images/5.JPG",
-        "assets/images/6.JPG",
-        "assets/images/7.JPG"
+        "assets/sheila/foto1.jpg",
+        "assets/sheila/foto2.jpg",
+        "assets/sheila/foto3.jpg",
+        "assets/sheila/foto4.jpg"
     ],
 
     // ===== CONFIGURACIÓN DEL CARRUSEL =====
